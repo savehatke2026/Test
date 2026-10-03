@@ -341,9 +341,13 @@
     #testimonials[hidden], #testimonials [hidden] { display:none; }
     .review-stage { position:relative; }
     #testimonials .tgrid { display:flex; justify-content:center; align-items:center; gap:0; overflow:hidden; padding:12px 0; }
-    #testimonials .tgrid > .tcard { flex:0 0 29%; min-height:290px; transform:scale(.86); }
-    #testimonials .tgrid > .tcard.is-current { flex-basis:33%; min-height:330px; transform:none; z-index:2; }
-    #testimonials .tgrid > .tcard:first-child:not(.is-current), #testimonials .tgrid > .tcard:last-child:not(.is-current) { transform:scale(.74); margin:0 -2%; z-index:0; }
+    #testimonials .tgrid > .tcard { flex:0 0 23%; min-height:250px; transform:scale(.8); z-index:1; }
+    #testimonials .tgrid > .tcard.is-current { flex-basis:27%; min-height:280px; transform:none; z-index:2; }
+    #testimonials .tgrid > .tcard { padding:16px 20px 14px; }
+    #testimonials .tgrid .ttext { margin:12px 0; }
+    #testimonials .tgrid .review-coupon { padding:8px; }
+    #testimonials .tgrid .review-avatar { width:52px; height:52px; }
+    #testimonials .tgrid > .tcard:first-child:not(.is-current), #testimonials .tgrid > .tcard:last-child:not(.is-current) { transform:scale(.8); margin:0 -1%; z-index:0; }
     #testimonials .tcard { position:relative; display:flex; flex-direction:column; padding:22px 22px 18px; border:1px solid var(--review-border); background:rgba(15,30,58,.75); border-radius:15px; min-width:0; opacity:.72; transition:opacity .25s,border-color .25s,background .25s; }
     #testimonials .tcard:hover { border-color:var(--review-accent); }
     #testimonials .tcard.is-current { opacity:1; border-color:var(--review-accent); background:linear-gradient(135deg,rgba(0,230,118,.08),rgba(15,30,58,.95) 60%); box-shadow:0 0 28px rgba(0,230,118,.08); }
@@ -354,15 +358,18 @@
     .review-avatar.has-initials { background-image:none; color:var(--review-accent); }
     .review-avatar img { width:100%; height:100%; object-fit:cover; }
     .review-name { font-size:clamp(16px,1.35vw,20px); font-weight:700; color:var(--review-text); line-height:1.3; }
-    .review-verified { display:inline-grid; place-items:center; vertical-align:middle; margin-left:6px; width:21px; height:21px; background:var(--review-accent); color:#060d1f; border-radius:50%; font-size:14px; }
+    .review-verified { display:inline-flex; align-items:center; justify-content:center; vertical-align:middle; margin-left:6px; width:18px; height:18px; min-width:18px; flex-shrink:0; background:var(--review-accent); color:#060d1f; border-radius:50%; line-height:1; }
+    .review-verified svg { display:block; width:11px; height:11px; }
     .review-location { color:var(--review-muted); font-size:14px; margin-top:4px; }
     #testimonials .tstars { color:var(--review-gold); font-size:22px; letter-spacing:2px; margin:8px 0 0; line-height:1; }
     .review-quotes { position:absolute; top:24px; right:21px; font:bold 55px/1 Georgia,serif; color:var(--review-accent); }
     #testimonials .ttext { position:relative; margin:18px 0; padding-left:25px; color:var(--review-text); font-size:clamp(15px,1.15vw,17px); line-height:1.55; font-style:normal; flex:1; }
-    #testimonials .ttext::before { content:'“'; position:absolute; left:0; top:-9px; color:var(--review-muted); font:bold 48px/1 Georgia,serif; }
+    #testimonials .ttext::before { content:none; }
+    #testimonials .tgrid .ttext { padding-left:0; }
     .review-tags { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:auto; }
     .review-tag { padding:9px 18px; border-radius:999px; background:rgba(0,230,118,.1); color:var(--review-accent); font-size:15px; font-weight:600; white-space:nowrap; }
     .review-arrow { position:absolute; top:45%; width:52px; height:52px; border:1px solid rgba(0,230,118,.6); background:#0f1e3a; border-radius:50%; color:var(--review-text); cursor:pointer; display:grid; place-items:center; font:36px/1 Arial,sans-serif; z-index:2; }
+    #testimonials .review-arrow { display:none; }
     .review-arrow.prev { left:-48px; } .review-arrow.next { right:-48px; }
     .review-arrow:hover { border-color:var(--review-accent); background:#12362b; }
     .review-arrow:focus-visible,.review-dot:focus-visible { outline:3px solid white; outline-offset:5px; }
@@ -377,14 +384,23 @@
     .review-brand.brand-myntra { background:#f4eef6; color:#d62479; }
     .review-brand.brand-amazon { background:#eef0f2; color:#17212c; font-family:Georgia,serif; }
     .review-coupon-copy { min-width:0; flex:1; }
-    .review-coupon-title { color:var(--review-text); font-size:14px; font-weight:600; line-height:1.3; }
+    .review-coupon-title { color:var(--review-text); font-size:14px; font-weight:600; line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .review-coupon-detail { color:var(--review-muted); font-size:12px; line-height:1.4; margin-top:3px; }
     .review-coupon .review-tag { flex-shrink:0; border:1px solid rgba(0,230,118,.35); padding:7px 10px; font-size:13px; }
     @media(min-width:761px) and (max-width:1100px) { .review-coupon { gap:7px;flex-wrap:wrap; } .review-coupon .review-tag { margin-left:auto; } .review-brand { width:34px;height:34px;font-size:20px; } }
     @media(max-width:400px) { .review-coupon { flex-wrap:wrap; } .review-coupon .review-tag { margin-left:auto; } }
-    @media(max-width:760px) { #testimonials .tgrid { display:block; padding:0; overflow:visible; } #testimonials .tgrid > .tcard.is-current { min-height:0; transform:none; } }
+    @media(max-width:760px) { #testimonials .tgrid { display:block; padding:0; overflow:hidden; } #testimonials .tgrid > .tcard.is-current { min-height:0; transform:none; margin:0; } }
     @media(prefers-reduced-motion:reduce) { #testimonials .tcard { transition:none; } }
 
+    #testimonials .tgrid { display:block; width:81%; margin:0 auto; padding:12px 0; overflow:hidden; }
+    .review-track { display:flex; width:100%; align-items:center; transform:translate3d(-33.333333%,0,0); will-change:transform; }
+    #testimonials .review-track > .tcard { display:flex; flex:0 0 33.333333%; height:328px; min-height:0; margin:0; transform:scale(.9); z-index:0; transition:transform 950ms cubic-bezier(.45,0,.2,1),opacity 950ms ease,border-color 950ms ease; }
+    #testimonials .review-track > .tcard.is-current { transform:scale(1); z-index:1; }
+    #testimonials .review-track .ttext { min-height:0; overflow:auto; }
+    @media(max-width:1100px) { #testimonials .tgrid { width:100%; } #testimonials .review-track > .tcard { height:362px; } }
+    @media(max-width:760px) { .review-track { transform:translate3d(-200%,0,0); } #testimonials .review-track > .tcard { display:flex; flex-basis:100%; height:385px; transform:none; } }
+    @media(prefers-reduced-motion:reduce) { #testimonials .review-track > .tcard { transition:none; } }
+    #testimonials .review-dot:disabled { cursor:default; }
   </style>
 </head>
 <body>
@@ -536,7 +552,7 @@
     </div>
     <div class="review-stage">
       <button class="review-arrow prev" type="button" aria-label="Previous review">‹</button>
-      <div class="tgrid" id="tmGrid" aria-live="polite"></div>
+      <div class="tgrid" id="tmGrid" aria-live="off"></div>
       <button class="review-arrow next" type="button" aria-label="Next review">›</button>
     </div>
     <div class="review-dots" id="tmDots" aria-label="Choose a review"></div>
@@ -902,63 +918,74 @@
   ];
   const escapeText = (value) => String(value == null ? '' : value).replace(/[&<>"']/g, (character) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
   function render() {
-    const indices = reviews.length >= 5 ? [-2,-1,0,1,2].map((offset) => (current + offset + reviews.length) % reviews.length) : reviews.length > 2 ? [(current - 1 + reviews.length) % reviews.length, current, (current + 1) % reviews.length] : reviews.map((review, index) => index);
-    grid.innerHTML = indices.map((index) => {
+    const indices = [-2,-1,0,1,2].map((offset) => (current + offset + reviews.length) % reviews.length);
+    const cardMarkup = indices.map((index) => {
       const review = reviews[index];
       const rating = Math.max(1, Math.min(5, Math.round(Number(review.rating) || 5)));
       const photoClass = ['priya','arjun','neha'].includes(review.photo) ? ' photo-' + review.photo : ' has-initials';
       const initials = review.initials || String(review.name || '').split(' ').map((part) => part[0]).slice(0,2).join('');
       const imageUrl = typeof review.avatar === 'string' && /^https?:\/\//i.test(review.avatar) ? review.avatar : '';
       const avatar = imageUrl ? '<img src="' + escapeText(imageUrl) + '" alt="" loading="lazy">' : (photoClass.includes('has-initials') ? escapeText(initials) : '');
-      const verified = review.verified === true ? '<span class="review-verified" aria-label="Verified customer">✓</span>' : '';
-      const brand = String(review.brand || review.category || 'Coupon');
+      const verified = review.verified === true ? '<span class="review-verified" aria-label="Verified customer"><svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6 4.5 8.5 10 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' : '';
+      const brand = String(review.brand || 'SaveHatke');
       const brandClass = ['Swiggy','Myntra','Amazon'].includes(brand) ? ' brand-' + brand.toLowerCase() : '';
       const brandMark = brand === 'Amazon' ? 'a' : brand.charAt(0);
-      const coupon = '<div class="review-brand' + brandClass + '" aria-hidden="true">' + escapeText(brandMark) + '</div><div class="review-coupon-copy"><div class="review-coupon-title">' + escapeText(review.offer || review.category || 'SaveHatke Coupon') + '</div>' + (review.detail ? '<div class="review-coupon-detail">' + escapeText(review.detail) + '</div>' : '') + '</div>';
+      const categoryText = String(review.offer || review.category || '');
+      const coupon = '<div class="review-brand' + brandClass + '" aria-hidden="true">' + escapeText(brandMark) + '</div><div class="review-coupon-copy"><div class="review-coupon-title" title="' + escapeText(brand) + '">' + escapeText(brand) + '</div>' + (categoryText ? '<div class="review-coupon-detail">' + escapeText(categoryText) + '</div>' : '') + '</div>';
       const savings = review.savings != null && Number.isFinite(Number(review.savings)) ? '<span class="review-tag">Saved ₹' + escapeText(review.savings) + '</span>' : '';
       return '<article class="tcard' + (index === current ? ' is-current' : '') + '" aria-label="Review ' + (index + 1) + ' of ' + reviews.length + '">' +
-        '<span class="review-quotes" aria-hidden="true">”</span><div class="review-person"><div class="review-avatar' + photoClass + '" aria-hidden="true">' + avatar + '</div><div><div class="review-name">' + escapeText(review.name) + verified + '</div>' +
+        '<div class="review-person"><div class="review-avatar' + photoClass + '" aria-hidden="true">' + avatar + '</div><div><div class="review-name">' + escapeText(review.name) + verified + '</div>' +
         '<div class="review-location">' + (review.location || review.role ? '⌖ ' + escapeText(review.location || review.role) : '') + '</div><div class="tstars" aria-label="' + rating + ' out of 5 stars">' + '★'.repeat(rating) + '☆'.repeat(5-rating) + '</div></div></div>' +
-        '<p class="ttext">' + escapeText(review.quote) + '”</p><div class="review-coupon">' + coupon + savings + '</div></article>';
+        '<p class="ttext">' + escapeText(review.quote) + '</p><div class="review-coupon">' + coupon + savings + '</div></article>';
     }).join('');
+    grid.innerHTML = '<div class="review-track">' + cardMarkup + '</div>';
     const dotCount = Math.min(3, reviews.length);
     const activeDot = Math.floor(current * dotCount / reviews.length);
-    dots.innerHTML = Array.from({length:dotCount}, (unused, index) => '<button type="button" class="review-dot" aria-label="Show review group ' + (index + 1) + '" aria-current="' + (index === activeDot) + '" data-review="' + Math.ceil(index * reviews.length / dotCount) + '"></button>').join('');
+    dots.innerHTML = Array.from({length:dotCount}, (unused, index) => '<button type="button" disabled class="review-dot" aria-label="Review group ' + (index + 1) + '" aria-current="' + (index === activeDot) + '" data-review="' + Math.ceil(index * reviews.length / dotCount) + '"></button>').join('');
     section.querySelectorAll('.review-arrow').forEach((button) => { button.hidden = reviews.length < 2; });
   }
-  function move(step) { current = (current + step + reviews.length) % reviews.length; render(); }
-  section.querySelector('.prev').addEventListener('click', () => move(-1));
-  section.querySelector('.next').addEventListener('click', () => move(1));
-  dots.addEventListener('click', (event) => {
-    const button = event.target.closest('[data-review]');
-    if (!button) return;
-    current = Number(button.dataset.review);
+  let autoTimer = null;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function stopAuto() { window.clearInterval(autoTimer); autoTimer = null; }
+  function startAuto() {
+    stopAuto();
+    if (document.hidden || section.hidden || reducedMotion.matches) return;
+    autoTimer = window.setInterval(() => {
+      if (reviews.length > 1) slide(1);
+    }, 2500);
+  }
+  let sliding = false;
+  async function slide(step, target = (current + step + reviews.length) % reviews.length) {
+    if (sliding || reviews.length < 2 || target === current) return;
+    const track = grid.querySelector('.review-track');
+    if (reducedMotion.matches || !track) { current = target; render(); return; }
+    sliding = true;
+    const mobile = window.matchMedia('(max-width:760px)').matches;
+    const distance = mobile ? 100 : 100 / 3;
+    const initial = mobile ? -200 : -100 / 3;
+    const cards = Array.from(track.children);
+    cards.forEach((card, index) => card.classList.toggle('is-current', index === 2 + step));
+    const animation = track.animate([
+      { transform:'translate3d(' + initial + '%,0,0)' },
+      { transform:'translate3d(' + (initial - step * distance) + '%,0,0)' }
+    ], { duration:950, easing:'cubic-bezier(.45,0,.2,1)', fill:'forwards' });
+    await animation.finished.catch(() => {});
+    current = target;
     render();
-    dots.querySelector('[aria-current="true"]').focus();
-  });
-  section.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-      event.preventDefault();
-      move(event.key === 'ArrowLeft' ? -1 : 1);
-    }
-  });
-  let startX = null;
-  grid.addEventListener('touchstart', (event) => { startX = event.touches[0].clientX; }, { passive:true });
-  grid.addEventListener('touchend', (event) => {
-    if (startX === null) return;
-    const distance = startX - event.changedTouches[0].clientX;
-    if (Math.abs(distance) > 45) move(distance > 0 ? 1 : -1);
-    startX = null;
-  }, { passive:true });
+    sliding = false;
+  }
+  document.addEventListener('visibilitychange', startAuto);
+  reducedMotion.addEventListener('change', startAuto);
   render();
+  startAuto();
   fetch('/api/testimonials').then((response) => {
     if (!response.ok) throw new Error('Testimonials unavailable');
     return response.json();
   }).then((data) => {
     const settings = data.section || {};
-    if (settings.show === false) { section.hidden = true; return; }
+    if (settings.show === false) { section.hidden = true; stopAuto(); return; }
     const cards = Array.isArray(data.testimonials) ? data.testimonials.filter((review) => review.name && review.quote) : [];
-    if (!cards.length) { section.hidden = true; return; }
+    if (!cards.length) { section.hidden = true; stopAuto(); return; }
     reviews = cards;
     current = cards.length > 1 ? 1 : 0;
     const label = document.getElementById('tmLabel');
